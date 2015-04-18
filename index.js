@@ -1,9 +1,11 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+const path = require('path');
 
 app.get('/', function(req, res){
-  res.sendfile('./public/index.html');
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 io.on('connection', function(socket){
